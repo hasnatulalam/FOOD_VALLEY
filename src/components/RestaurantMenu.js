@@ -3,50 +3,62 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { RES_IMG_CDN } from "../utils/constants";
+import { AiFillStar } from "react-icons/ai";
 
-const RestaurantMenu=()=>{
-   const {resId} =useParams();
-   const resInfo=useRestaurantMenu(resId) 
-  if(resInfo===null) return <Shimmer/> ;
+const RestaurantMenu = () => {
+   const { resId } = useParams();
+   const resInfo = useRestaurantMenu(resId)
+   if (resInfo === null) return <Shimmer />;
 
-  const {name,cuisines,costForTwoMessage,avgRating,cloudinaryImageId}=resInfo?.cards[0]?.card?.card?.info;
+   const { name, cuisines, deliveryTime, sla, totalRatingsString, areaName,
+      costForTwoMessage, avgRating, cloudinaryImageId, lastMileTravel } = resInfo?.cards[0]?.card?.card?.info;
 
-    const {itemCards}=resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-     ||resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]?.card?.card;
-    console.log(itemCards)
-   
- 
+   const { itemCards } = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
 
-     return (
-        <div className="menu">
-          <div className="restaurant-menu">
-      <div className="restaurant-summary">
-        <img className="restaurant-img" src={ RES_IMG_CDN  + cloudinaryImageId } alt={name}/>
-        <div className="restaurant-summary-details">
-          <h2 className="restaurant-title">{name}</h2>
-          <p className="restaurant-tags">{cuisines.join(", ")}</p>
-          <div className="restaurant-details">
-            <div className="restaurant-rating">
-              <span>{avgRating}</span>
+   console.log(resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+
+
+   const categories = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter
+      (c => c.card.card?.["@type"] ===
+         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      )
+   console.log(categories)
+
+
+
+   return (
+      <div className="res">
+         <div className="card flex basis-full h-60 justify-evenly items-center bg-blue-dark text-gray p-8">
+            <div className="card">
+               <h3 className="text-3xl max-w-[538px] font-semibold py-2">{name}</h3>
+               <p className="overflow-hidden whitespace-nowrap text-[15px] max-w-[538px]">{cuisines.join(",")}</p>
+               <p className="py-2">{areaName}</p>
+               <div className="flex items-center px-1 py-0 gap-1">
+          <span>{sla.lastMileTravel}</span> 
+          <span>{costForTwoMessage}</span>
+          </div>
+         
+         </div>
+         <div className="items-center px-1 py-0"> 
+               <div className="flex items-center px-1 py-0 gap-1">
+                  <AiFillStar />
+                  <p>{avgRating}</p>
+               </div>
+
+
+               <span>{totalRatingsString}</span>
             </div>
-            <div>|</div>
-            
-            <div>|</div>
-            <div>{costForTwoMessage}</div>
-          </div>
-          </div>
-          </div>
-          </div>
+         </div>
 
-       <h2>Menu</h2>
-         <ul>
+         <h2>Menu</h2>
+         {/* {   <ul>
          {itemCards.map((item)=>(
             <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
          ))}
          
-         </ul>
-        
-        </div>
-    );
+         </ul> } */}
+
+      </div>
+   );
 };
 export default RestaurantMenu;
