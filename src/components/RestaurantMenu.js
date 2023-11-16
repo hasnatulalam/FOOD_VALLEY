@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { RES_IMG_CDN } from "../utils/constants";
 import { AiFillStar } from "react-icons/ai";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
    const { resId } = useParams();
@@ -13,21 +14,21 @@ const RestaurantMenu = () => {
    const { name, cuisines, deliveryTime, sla, totalRatingsString, areaName,
       feeDetails,message , costForTwoMessage, avgRating, cloudinaryImageId, lastMileTravelString } = resInfo?.cards[0]?.card?.card?.info;
 
-   const { itemCards } = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
+  // const { itemCards } = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-   console.log(resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+   
 
 
    const categories = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter
       (c => c.card.card?.["@type"] ===
          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       )
-   console.log(categories)
+   
 
 
 
    return (
-      <div className="res">
+      <div className="flex justify-center sm:flex-col xsm:flex-col mob:flex-col">
          <div className="card flex basis-full h-60 justify-evenly items-center bg-blue-dark text-gray p-8">
             <div className="card">
                <h3 className="text-3xl max-w-[538px] font-semibold py-2">{name}</h3>
@@ -53,13 +54,9 @@ const RestaurantMenu = () => {
             </div>
          </div>
 
-         <h2>Menu</h2>
-         {/* {   <ul>
-         {itemCards.map((item)=>(
-            <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
-         ))}
-         
-         </ul> } */}
+          {categories.map((category,index)=>(
+               <RestaurantCategory key={index}  data={category?.card.card}/>
+                     ))}
 
       </div>
    );
