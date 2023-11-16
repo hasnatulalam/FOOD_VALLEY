@@ -16,14 +16,18 @@ const RestaurantMenu = () => {
 
   // const { itemCards } = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
+const data=  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards ||resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards 
+
+
+const categories = data.filter(
+      (c) =>
+         c.card.card?.["@type"] ==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+         
+);
+console.log(categories)
    
-
-
-   const categories = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter
-      (c => c.card.card?.["@type"] ===
-         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-      )
-      console.log(categories)
+     
+     
    
 
 
@@ -55,9 +59,9 @@ const RestaurantMenu = () => {
             </div>
          </div>
 
-          {categories.map((category,index)=>(
-               <RestaurantCategory key={index}  data={category?.card.card}/>
-                     ))}
+       {categories?.map((category)=>(
+         <RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/>
+          ))}
 
       </div>
    );

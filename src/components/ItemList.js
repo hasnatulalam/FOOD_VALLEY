@@ -11,11 +11,12 @@ const ItemList =({items})=>{
                 <h3>{item.card.info.price}</h3>
             </div>
         <div>
-               <img
-          className="w-[118px] h-[96px]"
+        <img className="w-[118px] h-[96px] absolute"
+          
           src={ITEM_IMG_CDN + item.card.info.imageId}
           alt={item?.name}
         />  
+          <button className="bg-white-500 font-bold py-2 px-5 rounded shadow-lg my-12  absolute">Add +</button> 
         </div>
                 
           </div>
