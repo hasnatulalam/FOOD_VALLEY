@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
    if (resInfo === null) return <Shimmer />;
 
    const { name, cuisines, deliveryTime, sla, totalRatingsString, areaName,
-      costForTwoMessage, avgRating, cloudinaryImageId, lastMileTravel } = resInfo?.cards[0]?.card?.card?.info;
+      feeDetails,message , costForTwoMessage, avgRating, cloudinaryImageId, lastMileTravelString } = resInfo?.cards[0]?.card?.card?.info;
 
    const { itemCards } = resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
 
@@ -32,12 +32,15 @@ const RestaurantMenu = () => {
             <div className="card">
                <h3 className="text-3xl max-w-[538px] font-semibold py-2">{name}</h3>
                <p className="overflow-hidden whitespace-nowrap text-[15px] max-w-[538px]">{cuisines.join(",")}</p>
-               <p className="py-2">{areaName}</p>
+               <div className="flex items-center px-1 pb-2 gap-1">
+               <p >{areaName},</p>
+               <p>{sla.lastMileTravelString}</p>
+               </div>
+              
                <div className="flex items-center px-1 py-0 gap-1">
-          <span>{sla.lastMileTravel}</span> 
-          <span>{costForTwoMessage}</span>
+          <span>{feeDetails.message}</span>
           </div>
-         
+          
          </div>
          <div className="items-center px-1 py-0"> 
                <div className="flex items-center px-1 py-0 gap-1">
