@@ -1,12 +1,13 @@
 import { RES_IMG_CDN } from "../utils/constants.js";
 
 const RestaurantCard=(props)=>{
-  
+ 
 const { resData }= props;
+//console.log(resData)
   const {cloudinaryImageId, name, avgRating,costForTwo,sla,deliveryTime,  cuisines}=resData?.info; 
   return(
  
-      <div className="max-w-sm rounded overflow-hidden shadow-lg py-4">
+      <div data-testid="resCard" className="max-w-sm rounded overflow-hidden shadow-lg py-4">
     <img className="w-full" src={RES_IMG_CDN + cloudinaryImageId}  alt={name}/>
     <div className="px-6 py-4">
     <div className="font-bold text-xl mb-2">{name}</div>

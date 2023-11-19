@@ -1,0 +1,108 @@
+ 
+    {
+    "info": {
+        "id": "387468",
+        "name": "The Breakfast Nook",
+        "cloudinaryImageId": "3a26aa967dc44e104627a4b8a8117454",
+        "locality": "6th Sector",
+        "areaName": "HSR Layout",
+        "costForTwo": "₹300 for two",
+        "cuisines": [
+            "American",
+            "Continental",
+            "Healthy Food",
+            "Beverages"
+        ],
+        "avgRating": 4.4,
+        "feeDetails": {
+            "restaurantId": "387468",
+            "fees": [
+                {
+                    "name": "BASE_TIME"
+                },
+                {
+                    "name": "BASE_DISTANCE",
+                    "fee": 4400
+                },
+                {
+                    "name": "ANCILLARY_SURGE_FEE"
+                }
+            ],
+            "totalFee": 4400
+        },
+        "parentId": "257216",
+        "avgRatingString": "4.4",
+        "totalRatingsString": "1K+",
+        "sla": {
+            "deliveryTime": 35,
+            "lastMileTravel": 3.9,
+            "serviceability": "SERVICEABLE",
+            "slaString": "35 mins",
+            "lastMileTravelString": "3.9 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2023-11-26 00:00:00",
+            "opened": true
+        },
+        "badges": {
+            "textExtendedBadges": [
+                {
+                    "iconId": "guiltfree/GF_Logo_android_3x",
+                    "shortDescription": "options available",
+                    "fontColor": "#7E808C"
+                }
+            ]
+        },
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "",
+                                "fontColor": "#7E808C",
+                                "iconId": "guiltfree/GF_Logo_android_3x",
+                                "shortDescription": "options available"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "50% OFF",
+            "subHeader": "UPTO ₹100"
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+        "context": "seo-data-67af084d-339e-48e7-851d-233575760374"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/the-breakfast-nook-6th-sector-hsr-layout-bangalore-387468",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}
