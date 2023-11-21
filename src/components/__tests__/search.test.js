@@ -19,15 +19,44 @@ it("Should render the Body component with search button",async()=>{
     </BrowserRouter>
   )
   );
-const searchBtn =screen.getByRole("button",{name:"search"});
 
-const search =screen.getByPlaceholderText("Search")
-fireEvent.change(search,{target:{value:"Cafe Amudham"}})
-fireEvent.click(searchBtn)
-const cards= screen.getByTestId("resCard");
-expect(cards.length).not.toBe(2)
 
-expect(searchBtn).toBeInTheDocument();
+const cardsBeforeSearch = screen.getAllByTestId("resCard");
+
+  expect(cardsBeforeSearch.length).toBe(9);
+
+  const searchBtn = screen.getByRole("button", { name: "search" });
+
+  const searchInput = screen.getByPlaceholderText("Search");
+
+  fireEvent.change(searchInput, { target: { value: "burger" } });
+
+  fireEvent.click(searchBtn);
+
+  const cardsAfterSearch = screen.getAllByTestId("resCard");
+
+  expect(cardsAfterSearch.length).toBe(2);
+});
+it("Should filter Top Rated Restaurant", async () => {
+    await act(async () =>
+      render(
+        <BrowserRouter>
+          <Body />
+        </BrowserRouter>
+      )
+    );
+  
+    const cardsBeforeFilter = screen.getAllByTestId("resCard");
+  
+    expect(cardsBeforeFilter.length).toBe(9);
+  
+    const topRatedBtn = screen.getByRole("button", {
+      name: "Top Rated Restaurant",
+    });
+    fireEvent.click(topRatedBtn);
+  
+    const cardsAfterFilter = screen.getAllByTestId("resCard");
+    expect(cardsAfterFilter.length).toBe(9);
+  });
    
   
-});

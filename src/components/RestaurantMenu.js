@@ -19,12 +19,12 @@ const RestaurantMenu = () => {
 const data=  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards ||resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards 
 
 
-const categories = data.filter(
+const categories = data?.filter(
       (c) =>
-         c.card.card?.["@type"] ==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+         c?.card?.card?.["@type"] ==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
          
 );
-console.log(categories)
+//console.log(categories)
    
      
      
